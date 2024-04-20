@@ -26,7 +26,8 @@ int numChanged = 0;
  }
  }
  return numChanged;
-} 
+}
+
 
 
 
@@ -36,13 +37,17 @@ int numChanged = 0;
    *  Postcondition: the length of samples reflects the removal of starting silence
    */
 public void trimSilenceFromBeginning() {
-int i = 0;
- while (this.samples[i] == 0) {
- i++;
- }
- int[] newSamples = new int[this.samples.length - i];
- for (int j = 0; j < newSamples.length; j++) {
- newSamples[j] = this.samples[j+i];
- }
- this.samples = newSamples;
-}
+  {
+    int numZeros = 0;
+    int n = 0;
+    while(samples[n] == 0){
+      numZeros = numZeros + 1;
+      n++;
+    }
+    int [] noZeros = new int[samples.length-numZeros];
+    int k = 0;
+    for(int i = numZeros; i<samples.length; i++){
+      noZeros[k] = samples[i]; k++;
+    }
+    samples = noZeros;
+  }
