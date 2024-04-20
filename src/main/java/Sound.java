@@ -13,21 +13,21 @@ public class Sound
    *         Precondition: limit >= 0
    *  @return the number of values in this sound that this method changed
    */
-public int limitAmplitude(int limit) {
-int numChanged = 0;
- for (int i = 0; i < this.samples.length; i++) {
- if (this.samples[i] < -limit) {
- this.samples[i] = -limit;
- numChanged++;
- }
- if (this.samples[i] > limit) {
- this.samples[i] = limit;
- numChanged++;
- }
- }
- return numChanged;
-}
-
+public int limitAmplitude(int limit) 
+  {
+    int numChanges = 0;
+    for(int i = 0; i<samples.length; i++){
+      for(samples[i] > limit){
+        samples[i] = limit;
+        numChanges = numChanges + 1;
+      }
+      else if(sampless[i] < 0 - limit){
+        samples [i] = 0 - limit;
+        numChanges = numChanges + 1;
+      }
+    }
+    return numChanges;
+  }
 
 
 
